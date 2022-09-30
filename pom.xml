@@ -34,8 +34,7 @@
 				<configuration>
 				    <cloudHubDeployment>
 				      <uri>https://anypoint.mulesoft.com</uri>
-				      <!--muleVersion>${app.runtime}</muleVersio-->
-                                      <muleVersion>4.3.0-20220824</muleVersion> 
+				      <muleVersion>${app.runtime}</muleVersion>
 				      <username>sayantan_bhattacharya</username>
 				      <password>Kolkata@5</password>
 				      <applicationName>mockbookingapi</applicationName>

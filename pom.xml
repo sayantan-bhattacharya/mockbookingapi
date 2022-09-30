@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
+	<groupId>368ab637-e661-40c7-84c5-7ded88ac5171</groupId>
 	<artifactId>mockbookingapi</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>mockbookingapi</name>
 
+	<description/>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.4.0-20220622</app.runtime>
-		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
+		<mule.maven.plugin.version>3.7.1</mule.maven.plugin.version>
+		<tags/>
+		<categories>[]</categories>
+		<fields>[]</fields>
 	</properties>
 
 	<build>
@@ -32,21 +34,21 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-				    <cloudHubDeployment>
-				      <uri>https://anypoint.mulesoft.com</uri>
-				      <muleVersion>${app.runtime}</muleVersion>
-				      <username>sayantan_bhattacharya</username>
-				      <password>Kolkata@5</password>
-				      <applicationName>mockbookingapi</applicationName>
-				      <environment>Sandbox</environment>
-				      <region>${region}</region>
-				      <workers>1</workers>
-				      <workerType>MICRO</workerType>
-				      <properties>
-				        <key>value</key>
-				      </properties>
-				    </cloudHubDeployment>
-				  </configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${app.runtime}</muleVersion>
+						<username>sayantan_bhattacharya</username>
+						<password>Kolkata@5</password>
+						<applicationName>mockbookingapi</applicationName>
+						<environment>Sandbox</environment>
+						<region>${region}</region>
+						<workers>1</workers>
+						<workerType>MICRO</workerType>
+						<properties>
+							<key>value</key>
+						</properties>
+					</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

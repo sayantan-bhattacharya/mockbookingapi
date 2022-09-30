@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="38b1d641-5778-449b-ab74-667efce0969d" >
+		<salesforce:basic-connection username="sayantan.bhattacharya@statista.com.prod.dev" password="Kolkata@1" securityToken="PVw7CWyGtfvDJiujdhjjctRFr" url="https://test.salesforce.com/services/Soap/u/55.0" />
+	</salesforce:sfdc-config >
+	<http:request-config name="HTTP_Booking_Auth_Request_configuration" doc:name="HTTP Request configuration" doc:id="c53508a8-fc9d-4c02-a32c-76ebb80a1cd8" >
+		<http:request-connection protocol="HTTPS" host="lb-euc-sem-service.statista.com" />
+	</http:request-config>
+	<http:request-config name="HTTP_Booking_API_Request_configuration" doc:name="HTTP Request configuration" doc:id="e208b13d-44d2-403b-9e71-8eb34417e9f6" >
+		<http:request-connection protocol="HTTPS" host="stat-hh-sales-service-dev.corp.statista.com" />
+	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="30be9d88-4536-40c6-a1a2-f40be74e075f" file="config.yaml" />
+	
+</mule>

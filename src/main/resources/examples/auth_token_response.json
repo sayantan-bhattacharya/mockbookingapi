@@ -1,0 +1,436 @@
+{
+    "id": 2446,
+    "firstname": "Thies",
+    "lastname": "Jacobsen",
+    "loginname": "thies.jacobsen",
+    "email": "thies.jacobsen@statista.com",
+    "isActive": true,
+    "roles": [],
+    "groups": [
+        {
+            "id": 169,
+            "groupKey": "AB_CORPORATE_RELATIONSHIP_MANAGERS",
+            "envKey": "TEST",
+            "appKey": "SALESDASHBOARD",
+            "name": "Account Booking CR access",
+            "description": "Account Booking access for CR"
+        },
+        {
+            "id": 189,
+            "groupKey": "ACCOUNT_MANAGER",
+            "envKey": "TEST",
+            "appKey": "SALESDASHBOARD",
+            "name": "Account Manager",
+            "description": "User group for using the Sales Dashboard as a Account Manager"
+        },
+        {
+            "id": 3,
+            "groupKey": "IT",
+            "envKey": "LIVE",
+            "appKey": null,
+            "name": "IT",
+            "description": "IT Department"
+        }
+    ],
+    "managedGroups": [
+        {
+            "id": 49,
+            "groupKey": "CRM_ACCOUNTING",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Accounting",
+            "description": "Accounting Mitarbeiter"
+        },
+        {
+            "id": 30,
+            "groupKey": "CRM_ACCOUNTING",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Accounting",
+            "description": "Accounting Mitarbeiter"
+        },
+        {
+            "id": 53,
+            "groupKey": "CRM_SALES_MANAGER_LTD",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Sales Manager (Ltd) CRM",
+            "description": "Sales Manager Ltd"
+        },
+        {
+            "id": 64,
+            "groupKey": "CRM_TRAINEE_GMBH",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Trainee (GmbH)",
+            "description": "Trainee GmbH"
+        },
+        {
+            "id": 68,
+            "groupKey": "CH_LTD",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "CH_Ltd",
+            "description": "Clearing House Statista Limited"
+        },
+        {
+            "id": 42,
+            "groupKey": "CRM_EMPLOYEE",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Mitarbeiter (GmbH)",
+            "description": "Angestellter der nicht im Vertrieb arbeitet"
+        },
+        {
+            "id": 51,
+            "groupKey": "CRM_EMPLOYEE",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Mitarbeiter (GmbH)",
+            "description": "Angestellter der nicht im Vertrieb arbeitet"
+        },
+        {
+            "id": 66,
+            "groupKey": "CRM_ADMIN",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Administrator",
+            "description": "Administrator mit allen Rechten"
+        },
+        {
+            "id": 40,
+            "groupKey": "CRM_ACCOUNTING",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Accounting",
+            "description": "Accounting Mitarbeiter"
+        },
+        {
+            "id": 52,
+            "groupKey": "CRM_SALES_MANAGER_GMBH",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Sales Manager (GmbH) CRM",
+            "description": "Sales Manager GmbH"
+        },
+        {
+            "id": 69,
+            "groupKey": "CH_INC",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "CH_Inc",
+            "description": "Clearing House Statista Inclusive"
+        },
+        {
+            "id": 155,
+            "groupKey": "SEOTOOL_RESEARCHER",
+            "envKey": "LIVE",
+            "appKey": "SEOTOOL",
+            "name": "SEOTool Researcher",
+            "description": "Usergroup for SEOTool"
+        },
+        {
+            "id": 55,
+            "groupKey": "CRM_TRAINEE_GMBH",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Trainee (GmbH)",
+            "description": "Trainee GmbH"
+        },
+        {
+            "id": 152,
+            "groupKey": "SEOTOOL_RESEARCHER",
+            "envKey": "DEV",
+            "appKey": "SEOTOOL",
+            "name": "SEOTool Researcher",
+            "description": "Usergroup for SEOTool"
+        },
+        {
+            "id": 28,
+            "groupKey": "CRM_ADMIN",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Administrator",
+            "description": "Administrator mit allen Rechten"
+        },
+        {
+            "id": 60,
+            "groupKey": "CRM_EMPLOYEE",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Mitarbeiter (GmbH)",
+            "description": "Angestellter der nicht im Vertrieb arbeitet"
+        },
+        {
+            "id": 34,
+            "groupKey": "CRM_SALES_MANAGER_LTD",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Sales Manager (Ltd) CRM",
+            "description": "Sales Manager Ltd"
+        },
+        {
+            "id": 63,
+            "groupKey": "CRM_SALES_MANAGER_INC",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Sales Manager (Inc) CRM",
+            "description": "Sales Manager Inc"
+        },
+        {
+            "id": 48,
+            "groupKey": "CRM_BACKOFFICE",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Backoffice",
+            "description": "Backoffice Mitarbeiter"
+        },
+        {
+            "id": 65,
+            "groupKey": "CRM_STUDENT_INTERN_GMBH",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Intern/Student (GmbH)",
+            "description": "Student oder Praktikant GmbH"
+        },
+        {
+            "id": 45,
+            "groupKey": "CRM_SALES_MANAGER_INC",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Sales Manager (Inc) CRM",
+            "description": "Sales Manager Inc"
+        },
+        {
+            "id": 39,
+            "groupKey": "CRM_BACKOFFICE",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Backoffice",
+            "description": "Backoffice Mitarbeiter"
+        },
+        {
+            "id": 31,
+            "groupKey": "CRM_FREELANCER",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Freier Mitarbeiter",
+            "description": "Freier Mitarbeiter"
+        },
+        {
+            "id": 57,
+            "groupKey": "CRM_BACKOFFICE",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Backoffice",
+            "description": "Backoffice Mitarbeiter"
+        },
+        {
+            "id": 38,
+            "groupKey": "CRM_ADMIN",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Administrator",
+            "description": "Administrator mit allen Rechten"
+        },
+        {
+            "id": 47,
+            "groupKey": "CRM_STUDENT_INTERN_GMBH",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Intern/Student (GmbH)",
+            "description": "Student oder Praktikant GmbH"
+        },
+        {
+            "id": 154,
+            "groupKey": "SEOTOOL_RESEARCHER",
+            "envKey": "STAGE",
+            "appKey": "SEOTOOL",
+            "name": "SEOTool Researcher",
+            "description": "Usergroup for SEOTool"
+        },
+        {
+            "id": 32,
+            "groupKey": "CRM_EMPLOYEE",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Mitarbeiter (GmbH)",
+            "description": "Angestellter der nicht im Vertrieb arbeitet"
+        },
+        {
+            "id": 56,
+            "groupKey": "CRM_STUDENT_INTERN_GMBH",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Intern/Student (GmbH)",
+            "description": "Student oder Praktikant GmbH"
+        },
+        {
+            "id": 43,
+            "groupKey": "CRM_SALES_MANAGER_GMBH",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Sales Manager (GmbH) CRM",
+            "description": "Sales Manager GmbH"
+        },
+        {
+            "id": 46,
+            "groupKey": "CRM_TRAINEE_GMBH",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Trainee (GmbH)",
+            "description": "Trainee GmbH"
+        },
+        {
+            "id": 50,
+            "groupKey": "CRM_FREELANCER",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Freier Mitarbeiter",
+            "description": "Freier Mitarbeiter"
+        },
+        {
+            "id": 58,
+            "groupKey": "CRM_ACCOUNTING",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Accounting",
+            "description": "Accounting Mitarbeiter"
+        },
+        {
+            "id": 44,
+            "groupKey": "CRM_SALES_MANAGER_LTD",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Sales Manager (Ltd) CRM",
+            "description": "Sales Manager Ltd"
+        },
+        {
+            "id": 54,
+            "groupKey": "CRM_SALES_MANAGER_INC",
+            "envKey": "STAGE",
+            "appKey": "CRM",
+            "name": "Sales Manager (Inc) CRM",
+            "description": "Sales Manager Inc"
+        },
+        {
+            "id": 59,
+            "groupKey": "CRM_FREELANCER",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Freier Mitarbeiter",
+            "description": "Freier Mitarbeiter"
+        },
+        {
+            "id": 37,
+            "groupKey": "CRM_STUDENT_INTERN_GMBH",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Intern/Student (GmbH)",
+            "description": "Student oder Praktikant GmbH"
+        },
+        {
+            "id": 33,
+            "groupKey": "CRM_SALES_MANAGER_GMBH",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Sales Manager (GmbH) CRM",
+            "description": "Sales Manager GmbH"
+        },
+        {
+            "id": 41,
+            "groupKey": "CRM_FREELANCER",
+            "envKey": "TEST",
+            "appKey": "CRM",
+            "name": "Freier Mitarbeiter",
+            "description": "Freier Mitarbeiter"
+        },
+        {
+            "id": 153,
+            "groupKey": "SEOTOOL_RESEARCHER",
+            "envKey": "TEST",
+            "appKey": "SEOTOOL",
+            "name": "SEOTool Researcher",
+            "description": "Usergroup for SEOTool"
+        },
+        {
+            "id": 67,
+            "groupKey": "CH_GMBH",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "CH_GmbH",
+            "description": "Clearing House Statista GmbH"
+        },
+        {
+            "id": 61,
+            "groupKey": "CRM_SALES_MANAGER_GMBH",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Sales Manager (GmbH) CRM",
+            "description": "Sales Manager GmbH"
+        },
+        {
+            "id": 29,
+            "groupKey": "CRM_BACKOFFICE",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Backoffice",
+            "description": "Backoffice Mitarbeiter"
+        },
+        {
+            "id": 62,
+            "groupKey": "CRM_SALES_MANAGER_LTD",
+            "envKey": "LIVE",
+            "appKey": "CRM",
+            "name": "Sales Manager (Ltd) CRM",
+            "description": "Sales Manager Ltd"
+        },
+        {
+            "id": 36,
+            "groupKey": "CRM_TRAINEE_GMBH",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Trainee (GmbH)",
+            "description": "Trainee GmbH"
+        },
+        {
+            "id": 35,
+            "groupKey": "CRM_SALES_MANAGER_INC",
+            "envKey": "DEV",
+            "appKey": "CRM",
+            "name": "Sales Manager (Inc) CRM",
+            "description": "Sales Manager Inc"
+        }
+    ],
+    "rights": [
+        {
+            "id": 501,
+            "rightKey": "ACCOUNT_BOOKING_ACCESS",
+            "envKey": "TEST",
+            "appKey": "SALESDASHBOARD",
+            "name": "Account Booking Access",
+            "description": "Permission to see and use Account Booking"
+        },
+        {
+            "id": 611,
+            "rightKey": "CUSTOMER_HEALTH_SCORE_UPLOAD",
+            "envKey": "TEST",
+            "appKey": "SALESDASHBOARD",
+            "name": "Customer Health Score Upload",
+            "description": "Users eligible to upload customer health score files."
+        }
+    ],
+    "metaData": [
+        {
+            "id": 1877,
+            "accountMetaDataKey": "CR_LIFECYCLE",
+            "value": "DACH_DEFAULT"
+        },
+        {
+            "id": 1878,
+            "accountMetaDataKey": "CONTENT_PLATFORM",
+            "value": "DE"
+        }
+    ],
+    "authToken": "7A9WP7FTSUTP343ZAEWSWLMJ39K1WTMS"
+}

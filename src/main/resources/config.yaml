@@ -1,0 +1,12 @@
+booking:
+  auth:
+    request:
+      loginname: "thies.jacobsen"
+      password: "ee8QuiJalee"
+      appkey: "SALESDASHBOARD"
+      envkey: "TEST"
+      
+  request:
+    xsemapp: SALESDASHBOARD
+    xsemenv: TEST
+          

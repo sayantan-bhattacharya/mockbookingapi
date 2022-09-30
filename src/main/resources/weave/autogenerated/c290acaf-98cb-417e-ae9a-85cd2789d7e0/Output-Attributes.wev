@@ -1,0 +1,5 @@
+%dw 2.0
+
+type auto_c290acaf_98cb_417e_ae9a_85cd2789d7e0_Output_Attributes = Any {"typeAlias": "Serializable",
+"typeId": "java.io.Serializable"}
+

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="Request_Token" doc:id="0279bafe-3a03-49a8-aa91-5e307b0de26d" >
+		<set-variable value="${booking.auth.request.loginname}" doc:name="loginname" doc:id="24cb0e68-fa1f-45e0-8705-c9d7b4ba9fc3" variableName="loginname" />
+		<set-variable value="${booking.auth.request.password}" doc:name="password" doc:id="0a5a53a9-e310-4f85-ab7a-42d5fb0fd9c7" variableName="password" />
+		<set-variable value="${booking.auth.request.appkey}" doc:name="appkey" doc:id="91c157c4-2f07-4de1-aadf-ec6f2967e6a8" variableName="appkey" />
+		<set-variable value="${booking.auth.request.envkey}" doc:name="envkey" doc:id="cbc79b50-9b51-4832-8f0d-cb8e5642994b" variableName="envkey" />
+		<ee:transform doc:name="Create_Auth_Request_body" doc:id="7a3a41e0-d274-49a7-a71c-977de08c3047" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	loginname: vars.loginname,
+	password: vars.password,
+	appKey: vars.appkey,
+	envKey: vars.envkey
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="AuthTokenRequest" doc:id="085dfee6-adfd-4490-8666-9547d7a992ea" message="#[payload]"/>
+		<http:request method="GET" doc:name="Request API Access Token" doc:id="035652f2-40cf-4206-aca4-4735c7cae0ea" config-ref="HTTP_Booking_Auth_Request_configuration" path="/login/"/>
+		<ee:transform doc:name="ExtractToken" doc:id="84372d48-dc4e-4e2a-abb7-f55e54b07224" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="authToken" ><![CDATA[%dw 2.0
+output application/json
+---
+payload.authToken]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="b4c5886d-b568-45a9-8700-70524e8a3c1c" message='#["Auth Token : " ++ ( vars.authToken as String )]'/>
+	</flow>
+	<flow name="OpportunityFromId" doc:id="c290acaf-98cb-417e-ae9a-85cd2789d7e0" >
+		<salesforce:query doc:name="Get Opportunity details" doc:id="8d5fc6ff-1d43-4763-9e78-5f16042b044d" config-ref="Salesforce_Config">
+			<salesforce:salesforce-query><![CDATA[select Id, Name, Amount, CloseDate, LeadSource, OpportunityOwnerName__c from Opportunity where Id = ':opportunityId']]></salesforce:salesforce-query>
+			<salesforce:parameters><![CDATA[#[output application/java
+---
+{
+	"opportunityId" : vars.oppId
+}]]]></salesforce:parameters>
+		</salesforce:query>
+		<ee:transform doc:name="Create_Booking Request_Body" doc:id="321aac31-686e-4965-8739-ebf7f1bb7a61">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	id: payload.Id default "",
+	amount: payload.Amount as String default "",
+	closeDate: payload.CloseDate as String default "",
+	name: payload.Name default "",
+	leadSource: payload.LeadSource default "",
+	owner: payload.OpportunityOwnerName__c default ""
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mockbookingapiFlow" doc:id="27b6a252-b173-479c-aa0a-e186fed88f27" >
+		<salesforce:subscribe-channel-listener doc:name="Subscribe channel listener" doc:id="e4d9370d-fa25-4709-a1b4-1a18b3a28fe5" config-ref="Salesforce_Config" streamingChannel="/event/MockBookingEvent__e"/>
+		<set-variable value="#[payload.data.payload.opportunityId__c as String]" doc:name="Set oppId" doc:id="b427aa8b-5dbb-4e48-961a-ac2e482b874d" variableName="oppId"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7621dc87-a73f-4c42-82cc-9635abe8cf55" message='#["event for opportunityId " ++ vars.oppId as String ++ "received"]'/>
+		<flow-ref doc:name="Get_Opportunity_Details" doc:id="0882107c-b12b-4a25-b634-5b371fa27470" name="OpportunityFromId"/>
+		<set-variable value="#[payload]" doc:name="opportunityDetails" doc:id="60d6c908-dec0-4d92-af7e-fd28141cdefc" variableName="opportunityDetails"/>
+		<logger level="INFO" doc:name="Log_Request_Payload" doc:id="22ed51f1-73af-4556-b214-ae4608443f48" message='#[vars.opportunityDetails]'/>
+		<flow-ref doc:name="Request_Token" doc:id="9d9b40a7-9920-4205-9229-3da4588f4727" name="Request_Token" />
+		<http:request method="GET" doc:name="Request" doc:id="b1ebbbd6-018b-48e4-8068-b859159970db" config-ref="HTTP_Booking_API_Request_configuration" path="/account-booking/request">
+			<http:body ><![CDATA['json="{\"request\": {
+    \"requesterId\": 28,
+    \"userId\": 1417710,
+    \"userContactAddress\":{
+        \"firstname\":\"Jane\",
+        \"lastname\":\"Doe\",
+        \"gender\":\"FEMALE\",
+        \"companyName\":\"Umbrella Corp.\",
+        \"phoneNumber\":\"+1 416 321313-55\",
+        \"emailAddress\":\"jane.doe@umbrella.com\",
+        \"country\":\"US\",
+        \"federalState\":\"CA\",
+        \"city\":\"[CA] Avalon\",
+        \"zipCode\":\"[CA] 90704\",
+        \"street\":\"[CA] Umbrella Alley\",
+        \"houseNo\":\"[CA] 20-27\",
+        \"addOn\":\"[CA] Building C\"
+    },
+    \"userBillingAddress\":null,
+    \"clearingHouse\": \"GMBH\",
+    \"liableOffice\": \"HAMBURG\",
+    \"salesTeam\": \"DACH\",
+    \"salesManagerId\": 1055,
+    \"accountBookingType\": \"NEW_BUSINESS\",
+    \"billingTerms\": \"NET_10\",
+    \"otherBillingTerms\": null,
+    \"salesChannels\":[
+        \"COLD_CALL\",
+        \"CUSTOMER_VISIT\"
+    ],
+    \"areSeatsLimited\": true,
+    \"seatsLimit\": 15,
+    \"accountAccessTypes\":[
+        \"PASSWORD\",
+        \"IP_LOGIN\",
+        \"DOMAIN\",
+        \"SSO_LINK\",
+        \"SHIBBOLETH\",
+        \"SAML_2\"
+    ],
+    \"agreementForm\":\"CONTRACT\",
+     \"products\": [
+            {
+                \"enumValue\": \"PREMIUM_ACCOUNT\",
+                \"price\": 25.00,
+                \"pricePerMonth\": 25.00,
+                \"description\": \"single account\"
+            },
+  {
+                \"enumValue\": \"DOSSIER\",
+                \"price\": 10.00,
+                \"pricePerMonth\": 10.00,
+
+                \"description\": \"dossier\"
+            }
+        ],
+    \"subscriptionStartDate\":null,
+    \"subscriptionFullMonths\":12,
+    \"subscriptionEndDate\":null,
+    \"pricePerMonth\":0.00,
+    \"discountAmount\":1.00,
+    \"newBusinessAmountPart\":0.00,
+    \"renewalAmountPart\":0.00,
+    \"invoiceAmount\":0.00,
+    \"currency\": \"EUR\",
+    \"businessLanguage\": \"DE\",
+    \"isPurchaseOrderNumberRequired\": false,
+    \"purchaseOrderNumber\": null,
+    \"vatId\": null,
+    \"hasAutoCancellation\": null,
+    \"contractDocumentUrl\": null,
+    \"contractDocumentFileName\": null,
+    \"contractDocument\": null,
+    \"offerDocumentUrl\": null,
+    \"offerDocumentFileName\": null,
+    \"offerDocument\": null,
+    \"isBundleBooking\": null,
+    \"isInvoiceSplit\":null,
+    \"dealType\": \"SINGLE\",
+    \"salesforceOpportunityId\":\"dsadsayxcsdfret\",
+    \"smRevenueShares\": [
+    {
+       \"salesManagerId\":321,
+\"profitCenter\":\"DACH_CORE\",
+\"totalShareInPercent\":100.00,
+\"totalShareValue\":0.01
+    }],
+    \"flsRevenueShares\": [],
+    \"additionalInfo\": null,
+    \"version\": null
+}}"']]></http:body>
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"X-SEM-TOKEN" : vars.authToken,
+	"X-SEM-APP" : "SALESDASHBOARD",
+	"Content-Type" : "application/json",
+	"X-SEM-ENV" : "TEST"
+}]]]></http:headers>
+		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="1c82920a-7119-4ded-83c6-bdc8423dd311" message="#[payload]"/>
+	</flow>
+</mule>
